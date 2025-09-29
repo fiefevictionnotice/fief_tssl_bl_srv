@@ -6,9 +6,9 @@ Fixes:
 - The original server has an example server.txt file, but will only run if no file extension is used with the original dockerfile (i.e. "server" instead of "server.txt"). This is an unnecessary source of confusion.
 
 Improvements:
-- The original dockerfile does not support passing through different TCP ports within the run command itself. In this version, if you want to run 10 servers with different names, game modes, etc. from one image on the same virtual machine you can. With the original dockerfile the "SERVER_PORT" variable is not exposed as a variable you passthrough to start the server.
+- This version is more flexible for running multiple instances of the same image on different listening ports. The original dockerfile does not expose multiple TCP ports or expose the SERVER_PORT variable. In this version, if you want to run 10 servers with multiple configurations (different server names, game modes, etc.) from one image on the same virtual machine you can. This is only possible if both are true A) multiple TCP/UDP ports are exposed in the dockerfile, and B) you are able to specify the SERVER_PORT variable with the run command. Both are true in this fork, but neither are true for the original branch. 
 - More example configurations.
-- Plans to add Chat Commands as a default. 
+- Plans to add Chat Commands (DOFAdminTools) as a default. 
 
 # ☀ TSSL Bannerlord Server
 
@@ -39,11 +39,11 @@ docker build -t tssl_bl_srv .
 
 ##### 🚀 Run Docker Image
 ```
-docker run -d --name bnlcc-realbattle \
+docker run -d --name bnl-battle \
 -e TW_TOKEN=<Your_Taleworlds_Token_Which_Expires_Every_3_Months> \
 -e MODULES="_MODULES_*Native*Multiplayer*_MODULES_" \
 -e TICK_RATE=60 \
--e SERVER_CFG="Native/server" \
+-e SERVER_CFG="Native/server-battle" \
 -e SERVER_PORT=7210 \
 -p 7210:7210/tcp -p 7210:7210/udp \
 yourazureregistry.azurecr.io/bannerlord:latest
@@ -68,8 +68,10 @@ docker run -d --name bnlcc-realbattle \
 ##### 📝 Other Helpful Example Commands
 
 Stop & remove container (without removing, you can't start it back up):
-- docker stop server && docker rm server
-- docker stop bnl-duel && docker rm bnl-duel
+```
+docker stop server && docker rm server
+docker stop bnl-duel && docker rm bnl-duel
+```
 
 Review logs (can provide useful information about errors:
 ```
@@ -111,6 +113,26 @@ For more informations about Taleworld Token, check out [Taleworld - Hosting a Cu
 
 For more informations about Custom Modules, check out [Taleworld - Custom Game Modules](https://moddocs.bannerlord.com/multiplayer/custom_game_mode/)
 
+---
+## 📁 Where do I place maps, custom modules, and server configuration files? 
+Multiplayer maps should be placed within the Scene Objects folder:
+```\tssl_bl_srv\modules\Multiplayer\SceneObj\*```
+
+Custom Modules reside within:
+```tssl_bl_srv\modules```
+e.g. ```C:\Users\<YourUsername>\Documents\tssl_bl_srv\modules\DoFAdminTools```
+
+Where do I place server configuration files?
+```\tssl_bl_srv\modules\Native\*``` 
+
+e.g. ``C:\Users\<Username>\Documents\tssl_bl_srv\modules\Native\server-duel-alt``
+
+## 📁 Importing Server Files
+
+Anything **placed** in the `modules/` directory will be copied to the `Modules/` directory in **[Docker Container](https://www.docker.com/resources/what-container/)**. This includes custom **scripts**, **assets**, **configurations**, or even **new modules**.
+
+**For more informations please read [Server Files Documentation](https://github.com/vojinpavlovic/tssl_bl_srv/blob/main/docs/server-files.md)**
+
 ##### 👉 Note: 
 
 You can use [Github Actions](https://docs.github.com/en/actions) to streamline the process of building images for to [Docker Hub](https:/hub.docker.com) these images can be deployed to a Dedicated Server. 
@@ -121,6 +143,13 @@ You must have linux with Docker pre-installed on Dedicated Server and an linux u
 - ! Do not use `root` access. The large part of Linux ecosystem is designed to be run as a limited user, not as root. Running applications as root is very insecure and it can lead you to break your entire system without warning if you're not careful.
 
 ---
+
+## ⚠️ Disclaimers
+
+Use at your own risk, there is no official support for this repository.
+
+Note from fork author: I have left the below unmodified from the original branch, but I have not used or tested these workflows; your mileage may vary.
+
 
 ## 🚀 Worfklows
 
@@ -135,7 +164,6 @@ Workflows are **stored** in the `.github/workflows directory`. A repository can 
 
 **For more informations please read [Workflow Documentation](https://github.com/vojinpavlovic/tssl_bl_srv/blob/main/docs/workflows.md)**
 
----
 
 ## 🔐 Github Stored Secrets
 
@@ -143,14 +171,7 @@ Secrets are variables that you create in an organization, repository, or reposit
 
 **For more informations please read [Secrets Documentation](https://github.com/vojinpavlovic/tssl_bl_srv/blob/main/docs/secrets.md)**
 
----
-
-## 📁 Importing Server Files
-
-Anything **placed** in the `modules/` directory will be copied to the `Modules/` directory in **[Docker Container](https://www.docker.com/resources/what-container/)**. This includes custom **scripts**, **assets**, **configurations**, or even **new modules**.
-
-**For more informations please read [Server Files Documentation](https://github.com/vojinpavlovic/tssl_bl_srv/blob/main/docs/server-files.md)**
 
 ---
 
-This project is licensed under the **MIT** License. See the [LICENSE](https://github.com/vojinpavlovic/tssl_bl_srv/blob/main/LICENSE) file for more details. Use at your own risk, there is no official support for this repository.
+This project is licensed under the **MIT** License. See the [LICENSE](https://github.com/vojinpavlovic/tssl_bl_srv/blob/main/LICENSE) file for more details.
