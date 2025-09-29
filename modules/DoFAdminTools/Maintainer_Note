@@ -1,0 +1,6 @@
+#To synchronize with upstream changes from Krex:
+
+git fetch dof
+git subtree pull --prefix=modules/DoFAdminTools dof master --squash
+# or: ... dof main --squash
+git push
