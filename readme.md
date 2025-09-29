@@ -1,4 +1,4 @@
-# ☀ Why does this fork of tssl_bl_srv exist?
+# 🍴 Why does this fork of tssl_bl_srv exist?
 
 Small fixes and improvements.
 
