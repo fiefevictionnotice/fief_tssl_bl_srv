@@ -1,3 +1,15 @@
+# ☀ Why does this fork exist?
+
+Small fixes and improvements.
+
+Fixes: 
+- The original server has an example server.txt file, but will only run if no file extension is used with the original dockerfile (i.e. "server" instead of "server.txt"). This is an unnecessary source of confusion.
+
+Improvements:
+- The original dockerfile does not support passing through different TCP ports within the run command itself. In this version, if you want to run 10 servers with different names, game modes, etc. from one image on the same virtual machine you can. With the original dockerfile the "SERVER_PORT" variable is not exposed as a variable you passthrough to start the server.
+- More example configurations.
+- Plans to add Chat Commands as a default. 
+
 # ☀ TSSL Bannerlord Server
 
 TSSL is a **dockerized** **Bannerlord server** setup that allows you to **quickly deploy** to Dedicated server. This guide provides instructions for setting up the server manually, as well as automating the build and deployment process using **GitHub Actions** and **Docker**.
