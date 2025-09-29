@@ -48,11 +48,13 @@ docker run -d --name bnlcc-realbattle \
 -p 7210:7210/tcp -p 7210:7210/udp \
 yourazureregistry.azurecr.io/bannerlord:latest
 ```
-Use the above example. By contrast, the original has no "SERVER_PORT" variable.
+
+By contrast, the original branch has no "SERVER_PORT" variable as of writing. 
 
 TCP ports 7210-7220 are exposed for both TCP & UDP in the dockerfile. You can modify this for a broader range of ports if you need to run more than 10 versions of the same image on the same box. 
 
 Additional example with updated TCP Port (works with the same image - note this example assumes you're running DOFAdminTools): 
+```
 docker run -d --name bnlcc-realbattle \
 -e TW_TOKEN=<YourTWTokenHere> \
 -e MODULES="_MODULES_*Native*Multiplayer*CCModule*DoFAdminTools*_MODULES_" \
@@ -61,7 +63,7 @@ docker run -d --name bnlcc-realbattle \
 -e SERVER_PORT=7215 \
 -p 7215:7215/tcp -p 7215:7215/udp \
 <YourRegistryName>.azurecr.io/bannerlord:latest
-
+```
 
 ##### 📝 Other Helpful Example Commands
 
@@ -70,20 +72,27 @@ Stop & remove container (without removing, you can't start it back up):
 - docker stop bnl-duel && docker rm bnl-duel
 
 Review logs (can provide useful information about errors:
-- docker logs -f bnl-skirmish
-- docker logs -f bnl-duel
-- docker logs -f bnl-duel | grep -i error
-- docker logs -f bnl-duel | grep -i warn
-- docker login
+```
+docker logs -f bnl-skirmish
+docker logs -f bnl-duel
+docker logs -f bnl-duel | grep -i error
+docker logs -f bnl-duel | grep -i warn
+docker login
+```
 If using Azure Container Registry: 
-- az acr login -n <YourRegistryNameHere>
+```
+az acr login -n <YourRegistryNameHere>
+```
 Stop All - use at your own risk:
-- docker stop $(docker ps -q)
-- docker rm $(docker ps -aq)
+```
+docker stop $(docker ps -q)
+docker rm $(docker ps -aq)
+```
 Review the contents of the Docker image without running it (can help detect issues with the config): 
-- docker run -it --rm <YourAzureContainerRegistry>.azurecr.io/bannerlord:latest bash
+```
+docker run -it --rm <YourAzureContainerRegistry>.azurecr.io/bannerlord:latest bash
 cat /bl_srv/Modules/Native/server-duel-test
-
+```
 
 #####  ⚙️ Enviornment Variables:
 - `-e TW_TOKEN="Your Taleworld Server Token"`
