@@ -34,7 +34,11 @@ Installation Links:
 
 ##### 🔧 Build Docker Image
 ```
-docker build -t tssl_bl_srv .
+docker build -t fief_tssl_bl_srv .
+```
+or:
+```
+docker build -f dockerfile -t YourRegistryHere.azurecr.io/bannerlord:latest .; docker push YourRegistryHere.azurecr.io/bannerlord:latest
 ```
 
 ##### 🚀 Run Docker Image
