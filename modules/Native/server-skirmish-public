@@ -1,6 +1,6 @@
 # Basic Settings
 # add_map_to_usable_maps mymap Siege,Skirmish
-# The maps to be served must be “registered” through either the Map configuration option, the add_map_to_automated_battle_pool or add_map_to_usable_maps commands. In other words, only maps playable on the server are served.
+# The maps to be served must be “registered” through either the Map configuration option, the add_map_to_automated_battle_pool or add_map_to_usable_maps commands. 
 
 ServerName Fief_TSSL_BL_Srv Skirmish Test Server
 GameType Skirmish
@@ -8,9 +8,12 @@ Map fief_town_outskirts_remastered_v1.1
 
 # Usable Maps (for voting/manual switch)
 add_map_to_usable_maps fief_town_outskirts_remastered_v1.1 Skirmish
+add_map_to_usable_maps mp_skirmish_map_010 Skirmish
 #add_map_to_usable_maps fief_town_outskirts_night_remaster_v1.1 Skirmish
 add_map_to_automated_battle_pool fief_town_outskirts_remastered_v1.1
 #add_map_to_automated_battle_pool fief_town_outskirts_night_remaster_v1.1
+#Echerion
+add_map_to_automated_battle_pool mp_skirmish_map_010
 
 # Cultures
 CultureTeam1 vlandia
