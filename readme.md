@@ -8,7 +8,9 @@ Fixes:
 Improvements:
 - This version is more flexible for running multiple instances of the same image on different listening ports. The original dockerfile does not expose multiple TCP ports or expose the SERVER_PORT variable. In this version, if you want to run 10 servers with multiple configurations (different server names, game modes, etc.) from one image on the same virtual machine you can. This is only possible if both are true A) multiple TCP/UDP ports are exposed in the dockerfile, and B) you are able to specify the SERVER_PORT variable with the run command. Both are true in this fork, but neither are true for the original branch. 
 - More example configurations.
-- Plans to add Chat Commands (DOFAdminTools) as a default. 
+
+ Planned:
+ Add Chat Commands (DoFAdminTools) as a default module.
 
 # ☀ TSSL Bannerlord Server
 
@@ -36,7 +38,7 @@ Installation Links:
 ```
 docker build -t fief_tssl_bl_srv .
 ```
-or:
+or, if using Azure Container REgistry:
 ```
 docker build -f dockerfile -t YourRegistryHere.azurecr.io/bannerlord:latest .; docker push YourRegistryHere.azurecr.io/bannerlord:latest
 ```
@@ -71,7 +73,7 @@ docker run -d --name bnlcc-realbattle \
 
 ##### 📝 Other Helpful Example Commands
 
-Stop & remove container (without removing, you can't start it back up):
+Stop & remove container (you can't start it back up without removing it first):
 ```
 docker stop server && docker rm server
 docker stop bnl-duel && docker rm bnl-duel
@@ -130,6 +132,40 @@ Where do I place server configuration files?
 ```\tssl_bl_srv\modules\Native\*``` 
 
 e.g. ``C:\Users\<Username>\Documents\tssl_bl_srv\modules\Native\server-duel-alt``
+
+
+## 💡 Getting Started with this Fork - Details for Beginners:
+
+First time GitHub users, read this:
+<details>
+  <summary>Click to expand</summary>
+ 
+**Summary:**
+ Install Git and clone the repository. You can modify the modules, server configuration files, and maps afterwards.
+ 
+**Install Git:**
+Download the Git installer: ```https://git-scm.com/download/win```
+Run it with the defaults (next → next → finish) - as with everything here, use at your own risk.
+Open PowerShell and check it worked:
+```git --version```
+You should see something like ```git version 2.x.x.```
+
+**Clone the Repo:**
+Then run:
+```
+cd $env:USERPROFILE\Documents
+git clone https://github.com/fiefevictionnotice/fief_tssl_bl_srv.git
+```
+
+That makes a folder:
+```
+C:\Users\YourName\Documents\fief_tssl_bl_srv
+```
+
+Whenever you add a map, you need to ensure you have an updated server configuration file which actually loads the map in. Then invoke that updated server configuration when you start the server. If you review the provided example configuration files, you can see how both native (built-in) and custom maps are loaded in a server configuration file. You cam mix multiple maps that support different game modes in a server even though that's not used in the example server configuration files.  
+
+</details>
+
 
 ## 📁 Importing Server Files
 
