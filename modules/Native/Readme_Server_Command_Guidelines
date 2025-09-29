@@ -1,0 +1,265 @@
+This is provided to list out what values can be configured on a server. 
+
+https://forums.taleworlds.com/index.php?threads/how-to-setup-a-bannerlord-server.454150/
+
+ [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.String, MultiplayerOptionsProperty.ReplicationOccurrence.AtMapLoad, "Changes the name of the server in the server list", 0, 0, null, false, null)]
+            ServerName,
+            // Token: 0x04002053 RID: 8275
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.String, MultiplayerOptionsProperty.ReplicationOccurrence.AtMapLoad, "Welcome messages which is shown to all players when they enter the server.", 0, 0, null, false, null)]
+            WelcomeMessage,
+            // Token: 0x04002054 RID: 8276
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.String, MultiplayerOptionsProperty.ReplicationOccurrence.Never, "Sets a password that clients have to enter before connecting to the server.", 0, 0, null, false, null)]
+            GamePassword,
+            // Token: 0x04002055 RID: 8277
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.String, MultiplayerOptionsProperty.ReplicationOccurrence.Never, "Sets a password that allows players access to admin tools during the game.", 0, 0, null, false, null)]
+            AdminPassword,
+            // Token: 0x04002056 RID: 8278
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.Integer, MultiplayerOptionsProperty.ReplicationOccurrence.Never, "Sets ID of the private game definition.", -2147483648, 2147483647, null, false, null)]
+            GameDefinitionId,
+            // Token: 0x04002057 RID: 8279
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.Bool, MultiplayerOptionsProperty.ReplicationOccurrence.Immediately, "Allow players to start polls to kick other players.", 0, 0, null, false, null)]
+            AllowPollsToKickPlayers,
+            // Token: 0x04002058 RID: 8280
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.Bool, MultiplayerOptionsProperty.ReplicationOccurrence.Immediately, "Allow players to start polls to ban other players.", 0, 0, null, false, null)]
+            AllowPollsToBanPlayers,
+            // Token: 0x04002059 RID: 8281
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.Bool, MultiplayerOptionsProperty.ReplicationOccurrence.Immediately, "Allow players to start polls to change the current map.", 0, 0, null, false, null)]
+            AllowPollsToChangeMaps,
+            // Token: 0x0400205A RID: 8282
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.Bool, MultiplayerOptionsProperty.ReplicationOccurrence.Immediately, "Allow players to use their custom banner.", 0, 0, null, false, null)]
+            AllowIndividualBanners,
+            // Token: 0x0400205B RID: 8283
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.Bool, MultiplayerOptionsProperty.ReplicationOccurrence.Immediately, "Use animation progress dependent blocking.", 0, 0, null, false, null)]
+            UseRealisticBlocking,
+            // Token: 0x0400205C RID: 8284
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.String, MultiplayerOptionsProperty.ReplicationOccurrence.AtMapLoad, "Changes the game type.", 0, 0, null, true, null)]
+            PremadeMatchGameMode,
+            // Token: 0x0400205D RID: 8285
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.String, MultiplayerOptionsProperty.ReplicationOccurrence.AtMapLoad, "Changes the game type.", 0, 0, null, true, null)]
+            GameType,
+            // Token: 0x0400205E RID: 8286
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.Enum, MultiplayerOptionsProperty.ReplicationOccurrence.AtMapLoad, "Type of the premade game.", 0, 1, null, true, typeof(PremadeGameType))]
+            PremadeGameType,
+            // Token: 0x0400205F RID: 8287
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.String, MultiplayerOptionsProperty.ReplicationOccurrence.AtMapLoad, "Map of the game.", 0, 0, null, true, null)]
+            Map,
+            // Token: 0x04002060 RID: 8288
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.String, MultiplayerOptionsProperty.ReplicationOccurrence.Immediately, "Sets culture for team 1", 0, 0, null, true, null)]
+            CultureTeam1,
+            // Token: 0x04002061 RID: 8289
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.String, MultiplayerOptionsProperty.ReplicationOccurrence.Immediately, "Sets culture for team 2", 0, 0, null, true, null)]
+            CultureTeam2,
+            // Token: 0x04002062 RID: 8290
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.Integer, MultiplayerOptionsProperty.ReplicationOccurrence.Immediately, "Set the maximum amount of player allowed on the server.", 1, 1023, null, false, null)]
+            MaxNumberOfPlayers,
+            // Token: 0x04002063 RID: 8291
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.Integer, MultiplayerOptionsProperty.ReplicationOccurrence.Immediately, "Set the amount of players that are needed to start the first round. If not met, players will just wait.", 0, 20, null, false, null)]
+            MinNumberOfPlayersForMatchStart,
+            // Token: 0x04002064 RID: 8292
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.Integer, MultiplayerOptionsProperty.ReplicationOccurrence.Immediately, "Amount of bots on team 1", 0, 100, null, false, null)]
+            NumberOfBotsTeam1,
+            // Token: 0x04002065 RID: 8293
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.Integer, MultiplayerOptionsProperty.ReplicationOccurrence.Immediately, "Amount of bots on team 2", 0, 100, new string[]
+            {
+                "Battle",
+                "NewBattle",
+                "ClassicBattle",
+                "Captain",
+                "Skirmish",
+                "Siege",
+                "TeamDeathmatch"
+            }, false, null)]
+            NumberOfBotsTeam2,
+            // Token: 0x04002066 RID: 8294
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.Integer, MultiplayerOptionsProperty.ReplicationOccurrence.Immediately, "Amount of bots per formation", 0, 100, new string[]
+            {
+                "Captain"
+            }, false, null)]
+            NumberOfBotsPerFormation,
+            // Token: 0x04002067 RID: 8295
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.Integer, MultiplayerOptionsProperty.ReplicationOccurrence.Immediately, "A percentage of how much melee damage inflicted upon a friend is dealt back to the inflictor.", 0, 100, new string[]
+            {
+                "Battle",
+                "NewBattle",
+                "ClassicBattle",
+                "Captain",
+                "Skirmish",
+                "Siege",
+                "TeamDeathmatch"
+            }, false, null)]
+            FriendlyFireDamageMeleeSelfPercent,
+            // Token: 0x04002068 RID: 8296
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.Integer, MultiplayerOptionsProperty.ReplicationOccurrence.Immediately, "A percentage of how much melee damage inflicted upon a friend is actually dealt.", 0, 100, new string[]
+            {
+                "Battle",
+                "NewBattle",
+                "ClassicBattle",
+                "Captain",
+                "Skirmish",
+                "Siege",
+                "TeamDeathmatch"
+            }, false, null)]
+            FriendlyFireDamageMeleeFriendPercent,
+            // Token: 0x04002069 RID: 8297
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.Integer, MultiplayerOptionsProperty.ReplicationOccurrence.Immediately, "A percentage of how much ranged damage inflicted upon a friend is dealt back to the inflictor.", 0, 100, new string[]
+            {
+                "Battle",
+                "NewBattle",
+                "ClassicBattle",
+                "Captain",
+                "Skirmish",
+                "Siege",
+                "TeamDeathmatch"
+            }, false, null)]
+            FriendlyFireDamageRangedSelfPercent,
+            // Token: 0x0400206A RID: 8298
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.Integer, MultiplayerOptionsProperty.ReplicationOccurrence.Immediately, "A percentage of how much ranged damage inflicted upon a friend is actually dealt.", 0, 100, new string[]
+            {
+                "Battle",
+                "NewBattle",
+                "ClassicBattle",
+                "Captain",
+                "Skirmish",
+                "Siege",
+                "TeamDeathmatch"
+            }, false, null)]
+            FriendlyFireDamageRangedFriendPercent,
+            // Token: 0x0400206B RID: 8299
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.Enum, MultiplayerOptionsProperty.ReplicationOccurrence.Immediately, "Who can spectators look at, and how.", 0, 7, null, true, typeof(SpectatorCameraTypes))]
+            SpectatorCamera,
+            // Token: 0x0400206C RID: 8300
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.Integer, MultiplayerOptionsProperty.ReplicationOccurrence.AtMapLoad, "Maximum duration for the warmup. In minutes.", 1, 60, null, false, null)]
+            WarmupTimeLimit,
+            // Token: 0x0400206D RID: 8301
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.Integer, MultiplayerOptionsProperty.ReplicationOccurrence.Immediately, "Maximum duration for the map. In minutes.", 1, 60, null, false, null)]
+            MapTimeLimit,
+            // Token: 0x0400206E RID: 8302
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.Integer, MultiplayerOptionsProperty.ReplicationOccurrence.Immediately, "Maximum duration for each round. In seconds.", 120, 960, new string[]
+            {
+                "Battle",
+                "NewBattle",
+                "ClassicBattle",
+                "Captain",
+                "Skirmish",
+                "Siege"
+            }, false, null)]
+            RoundTimeLimit,
+            // Token: 0x0400206F RID: 8303
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.Integer, MultiplayerOptionsProperty.ReplicationOccurrence.Immediately, "Time available to select class/equipment. In seconds.", 2, 60, new string[]
+            {
+                "Battle",
+                "NewBattle",
+                "ClassicBattle",
+                "Captain",
+                "Skirmish",
+                "Siege"
+            }, false, null)]
+            RoundPreparationTimeLimit,
+            // Token: 0x04002070 RID: 8304
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.Integer, MultiplayerOptionsProperty.ReplicationOccurrence.Immediately, "Maximum amount of rounds before the game ends.", 1, 20, new string[]
+            {
+                "Battle",
+                "NewBattle",
+                "ClassicBattle",
+                "Captain",
+                "Skirmish",
+                "Siege"
+            }, false, null)]
+            RoundTotal,
+            // Token: 0x04002071 RID: 8305
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.Integer, MultiplayerOptionsProperty.ReplicationOccurrence.Immediately, "Wait time after death, before respawning again. In seconds.", 1, 60, new string[]
+            {
+                "Siege"
+            }, false, null)]
+            RespawnPeriodTeam1,
+            // Token: 0x04002072 RID: 8306
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.Integer, MultiplayerOptionsProperty.ReplicationOccurrence.Immediately, "Wait time after death, before respawning again. In seconds.", 1, 60, new string[]
+            {
+                "Siege"
+            }, false, null)]
+            RespawnPeriodTeam2,
+            // Token: 0x04002073 RID: 8307
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.Bool, MultiplayerOptionsProperty.ReplicationOccurrence.AtMapLoad, "Unlimited gold option.", 0, 0, new string[]
+            {
+                "Battle",
+                "Skirmish",
+                "Siege",
+                "TeamDeathmatch"
+            }, false, null)]
+            UnlimitedGold,
+            // Token: 0x04002074 RID: 8308
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.Integer, MultiplayerOptionsProperty.ReplicationOccurrence.Immediately, "Gold gain multiplier from agent deaths.", -100, 100, new string[]
+            {
+                "Siege",
+                "TeamDeathmatch"
+            }, false, null)]
+            GoldGainChangePercentageTeam1,
+            // Token: 0x04002075 RID: 8309
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.Integer, MultiplayerOptionsProperty.ReplicationOccurrence.Immediately, "Gold gain multiplier from agent deaths.", -100, 100, new string[]
+            {
+                "Siege",
+                "TeamDeathmatch"
+            }, false, null)]
+            GoldGainChangePercentageTeam2,
+            // Token: 0x04002076 RID: 8310
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.Integer, MultiplayerOptionsProperty.ReplicationOccurrence.Immediately, "Min score to win match.", 0, 1023000, new string[]
+            {
+                "TeamDeathmatch"
+            }, false, null)]
+            MinScoreToWinMatch,
+            // Token: 0x04002077 RID: 8311
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.Integer, MultiplayerOptionsProperty.ReplicationOccurrence.Immediately, "Min score to win duel.", 0, 7, new string[]
+            {
+                "Duel"
+            }, false, null)]
+            MinScoreToWinDuel,
+            // Token: 0x04002078 RID: 8312
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.Integer, MultiplayerOptionsProperty.ReplicationOccurrence.Immediately, "Minimum needed difference in poll results before it is accepted.", 0, 10, null, false, null)]
+            PollAcceptThreshold,
+            // Token: 0x04002079 RID: 8313
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.Enum, MultiplayerOptionsProperty.ReplicationOccurrence.Immediately, "Maximum player imbalance between team 1 and team 2.", 0, 5, null, true, typeof(AutoTeamBalanceLimits))]
+            AutoTeamBalanceThreshold,
+            // Token: 0x0400207A RID: 8314
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.Bool, MultiplayerOptionsProperty.ReplicationOccurrence.Immediately, "Enables anti-cheat.", 0, 0, null, false, null)]
+            EnableAntiCheat,
+            // Token: 0x0400207B RID: 8315
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.Bool, MultiplayerOptionsProperty.ReplicationOccurrence.AtMapLoad, "Enables mission recording.", 0, 0, null, false, null)]
+            EnableMissionRecording,
+            // Token: 0x0400207C RID: 8316
+            [MultiplayerOptionsProperty(MultiplayerOptions.OptionValueType.Bool, MultiplayerOptionsProperty.ReplicationOccurrence.AtMapLoad, "Sets if the game mode uses single spawning.", 0, 0, null, false, null)]
+            SingleSpawn,
+            // Token: 0x0400207D RID: 8317
+            NumOfSlots
+			
+			
+			
+			
+	KREX Skirmie config
+ServerName TestServer
+GameType Skirmish
+AdminPassword YouShouldChangeThis
+Map mp_skirmish_map_008_skin
+add_map_to_automated_battle_pool mp_skirmish_map_008_skin
+
+CultureTeam1 khuzait
+CultureTeam2 battania
+RespawnPeriodTeam1 5
+RespawnPeriodTeam2 5
+RoundPreparationTimeLimit 25
+MaxNumberOfPlayers 12
+AutoTeamBalanceThreshold 0
+FriendlyFireDamageMeleeFriendPercent 50
+FriendlyFireDamageMeleeSelfPercent 0
+FriendlyFireDamageRangedFriendPercent 50
+FriendlyFireDamageRangedSelfPercent 0
+MinNumberOfPlayersForMatchStart 0
+SpectatorCamera 6
+RoundTotal 5
+MapTimeLimit 60
+RoundTimeLimit 420
+WarmupTimeLimit 60
+
+
+set_automated_battle_count -1
+enable_automated_battle_switching
+start_game_and_mission
