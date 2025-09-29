@@ -82,8 +82,8 @@ docker stop bnl-duel && docker rm bnl-duel
 Review logs (can provide useful information about errors:
 ```
 docker logs -f bnl-skirmish
-docker logs -f bnl-duel
-docker logs -f bnl-duel | grep -i error
+docker logs -f server-arena-tdm
+docker logs -f server-arena-tdm | grep -i error
 docker logs -f bnl-duel | grep -i warn
 docker login
 ```
