@@ -1,0 +1,125 @@
+This saves you the trouble of reviewing your own installation folder to determine what native maps are available: 
+C:\Program Files (x86)\Steam\steamapps\common\Mount & Blade II Bannerlord\Modules\Native\SceneObj
+
+NOTE FOR MAP EDITORS: 
+Only these maps have a terrian file if you open them in the modding toolkit:
+mp:
+mp_siege_map_003
+mp_skirmish_map_002f
+mp_sergeant_map_008
+mp_tdm_map_001
+mp_battle_map_002
+mp_duel_mode_map_004
+
+TRANSLATION (CREDIT TO Le Profyteur for listing tehse on the Mount & Blade Modding discord): 
+Map List : 
+mp_duel_001" text="Imperial Villa" 
+mp_sergeant_map_007" text="Ruins of Jawwali" 
+mp_sergeant_map_008" text="Druimmor Forest" 
+mp_sergeant_map_009" text="Cliffs of Akkalat" 
+mp_sergeant_map_010" text="Pendaric"
+mp_sergeant_map_011" text="Isle of Deriad" 
+mp_sergeant_map_011_rw" text="Isle of Deriad
+mp_sergeant_map_011_rw_winter" text="Isle of Deriad (Winter)"
+mp_sergeant_map_013" text="Streets of Syllianon" 
+mp_sergeant_map_018" text="Ebereth Hillfort" 
+mp_sergeant_map_018_w" text="Ebereth Hillfort" 
+mp_skirmish_map_008_skin" text="Port at Omor" 
+mp_skirmish_map_010" text="Echerion" 
+mp_skirmish_map_010_winter" text="Echerion" 
+mp_sergeant_map_011s" text="sle of Deriad (Winter)" 
+mp_skirmish_map_003_skinc" text="Trading Post"  
+mp_skirmish_map_002f" text="Town Outskirts"
+mp_skirmish_map_007" text="Xauna"
+mp_skirmish_map_007_winter" text="}Xauna"
+mp_skirmish_map_009" text="Zendyar"
+mp_skirmish_map_014" text="Urikskalaar"
+mp_skirmish_map_020" text="Sharis"
+mp_tdm_map_001" text="Harbour of Ovsk (Winter)"
+mp_tdm_map_001_spring" text="Harbour of Ovsk"
+mp_tdm_map_004" text="Nord Town"
+mp_tdm_map_004a" text="Nord Town"
+mp_tdm_map_004a_w" text="Nord Town"
+mp_tdm_map_003" text="Tsagaan Castle"
+mp_siege_map_004_rs" text="Desert test siege map TEMP"
+mp_siege_map_005" text="Baravenos Encirclement"
+mp_siege_map_005_winter" text="Baravenos Encirclement" 
+mp_siege_map_003" text="Skala Landing" />
+mp_siege_map_007_battania" text="Castle of fen Altai" 
+mp_siege_map_007_battania_w" text="Castle of fen Altai"
+mp_duel_mode_map_004" text="Proving Grounds"
+mp_duel_mode_map_004_w" text="Proving Grounds"
+mp_duel_mode_map_004_night" text="Proving Grounds (Night)"
+mp_siege_map_009" text="Ayzar Stronghold" 
+mp_siege_map_012" text="Domogtul Castle"
+mp_battle_map_001" text="Cypegos Blockade"
+mp_battle_map_002" text="Osrac Insurrection" 
+mp_battle_map_003" text="Skolder Hideout" 
+mp_siege_map_012_w" text="Domogtul Castle"  
+You can found here : steamapps\common\Mount & Blade II Bannerlord\Modules\Native\ModuleData\native_strings
+
+mp_battle_map_001
+mp_battle_map_002
+mp_battle_map_003
+mp_compact
+mp_duel_001
+mp_duel_002
+mp_duel_mode_map_004
+mp_duel_mode_map_004_night
+mp_duel_mode_map_004_w
+mp_sergeant_map_001
+mp_sergeant_map_005
+mp_sergeant_map_007
+mp_sergeant_map_008
+mp_sergeant_map_009
+mp_sergeant_map_010
+mp_sergeant_map_011
+mp_sergeant_map_011s
+mp_sergeant_map_011_rw
+mp_sergeant_map_011_rw_winter
+mp_sergeant_map_012
+mp_sergeant_map_013
+mp_sergeant_map_018
+mp_sergeant_map_018_w
+mp_sergeant_map_vlandia_01
+mp_siege_map_003
+mp_siege_map_004
+mp_siege_map_004_rs
+mp_siege_map_005
+mp_siege_map_005_winter
+mp_siege_map_006
+mp_siege_map_007_battania
+mp_siege_map_007_battania_w
+mp_siege_map_007_winter
+mp_siege_map_009
+mp_siege_map_010
+mp_siege_map_011_b
+mp_siege_map_012
+mp_siege_map_012_w
+mp_skirmish_map_002f
+mp_skirmish_map_002_winter
+mp_skirmish_map_003_skinc
+mp_skirmish_map_004
+mp_skirmish_map_005
+mp_skirmish_map_006
+mp_skirmish_map_006_nowater
+mp_skirmish_map_007
+mp_skirmish_map_007_winter
+mp_skirmish_map_008
+mp_skirmish_map_008_skin
+mp_skirmish_map_009
+mp_skirmish_map_010
+mp_skirmish_map_010_winter
+mp_skirmish_map_013
+mp_skirmish_map_014
+mp_skirmish_map_020
+mp_skirmish_map_battania_02
+mp_skirmish_map_battania_03
+mp_skirmish_spawn_test
+mp_tdm_map_001
+mp_tdm_map_001_spring
+mp_tdm_map_003
+mp_tdm_map_004
+mp_tdm_map_004a
+mp_tdm_map_004a_w
+mp_tdm_map_004a_winter
