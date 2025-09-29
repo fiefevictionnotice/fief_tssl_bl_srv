@@ -78,10 +78,31 @@ COPY modules/ ${BANNERLORDDIR}/Modules/
 
 # Expose TCP port 7210
 EXPOSE 7210/tcp
+EXPOSE 7211/tcp
+EXPOSE 7212/tcp
+EXPOSE 7213/tcp
+EXPOSE 7214/tcp
+EXPOSE 7215/tcp
+EXPOSE 7216/tcp
+EXPOSE 7217/tcp
+EXPOSE 7218/tcp
+EXPOSE 7219/tcp
+EXPOSE 7220/tcp
+#TCP/UDP ports could be expanded in your own dockerfile if needed.
 
 # Expose UDP port 7210
 EXPOSE 7210/udp
+EXPOSE 7211/udp
+EXPOSE 7212/udp
+EXPOSE 7213/udp
+EXPOSE 7214/udp
+EXPOSE 7215/udp
+EXPOSE 7216/udp
+EXPOSE 7217/udp
+EXPOSE 7218/udp
+EXPOSE 7219/udp
+EXPOSE 7220/udp
 
 # Run the server
-CMD ["/bin/sh", "-c", "dotnet TaleWorlds.Starter.DotNetCore.Linux.dll $MODULES /dedicatedcustomserverconfigfile ../../Modules/$SERVER_CFG /tickrate $TICK_RATE /dedicatedcustomserverauthtoken $TW_TOKEN /dedicatedcustomserver 7210 USER 0 /playerhosteddedicatedserver"]
-
+# SERVER_PORT is no longer hardcoded in this fork.
+CMD ["/bin/sh", "-c", "dotnet TaleWorlds.Starter.DotNetCore.Linux.dll $MODULES /dedicatedcustomserverconfigfile ../../Modules/$SERVER_CFG /tickrate $TICK_RATE /dedicatedcustomserverauthtoken $TW_TOKEN /dedicatedcustomserver ${SERVER_PORT} USER 0 /playerhosteddedicatedserver"]
