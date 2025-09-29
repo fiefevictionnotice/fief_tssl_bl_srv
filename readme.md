@@ -38,7 +38,7 @@ Installation Links:
 ```
 docker build -t fief_tssl_bl_srv .
 ```
-or, if using Azure Container REgistry:
+or, if using Azure Container Registry:
 ```
 docker build -f dockerfile -t YourRegistryHere.azurecr.io/bannerlord:latest .; docker push YourRegistryHere.azurecr.io/bannerlord:latest
 ```
