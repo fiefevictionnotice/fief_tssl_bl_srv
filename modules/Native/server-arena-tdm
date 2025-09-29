@@ -1,0 +1,49 @@
+# Basic Settings
+#add_map_to_usable_maps mymap Siege,Skirmish
+#The maps to be served must be “registered” through either the Map configuration option, the add_map_to_automated_battle_pool or add_map_to_usable_maps commands.
+
+ServerName Fief_TSSL_BL_Srv Test TDM Server
+GameType TeamDeathmatch
+Map scn_oldarena_tdm
+add_map_to_automated_battle_pool scn_oldarena_tdm
+add_map_to_usable_maps scn_oldarena_tdm TeamDeathmatch
+set_automated_battle_count -1
+
+# Culture Settings
+#CultureTeam1 Aserai
+#CultureTeam2 Vlandia
+
+# Match & Round
+RoundTimeLimit 60
+WarmupTimeLimit 5
+MinNumberOfPlayersForMatchStart 0
+RoundTotal 50
+MapTimeLimit 60
+
+# Players
+MaxNumberOfPlayers 64
+AutoTeamBalanceThreshold 0
+
+# Friendly Fire
+FriendlyFireDamageMeleeFriendPercent 50
+FriendlyFireDamageMeleeSelfPercent 20
+FriendlyFireDamageRangedFriendPercent 20
+FriendlyFireDamageRangedSelfPercent 15
+
+# Passwords
+AdminPassword YouShouldChangeThis
+UnlimitedGold True
+
+# Messaging (DoFAdminTools)
+#dat_add_automessage Welcome to My First Arena Server
+#dat_set_automessage_interval 900
+#dat_set_automessage_type ADMINCHAT
+
+# Misc
+SpectatorCamera 6
+start_game
+enable_automated_battle_switching
+
+# OPTIONAL:
+#disable_map_voting
+#disable_culture_voting
