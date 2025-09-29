@@ -1,0 +1,75 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    
+    <PropertyGroup>
+        <BuildDir>.\bin\Release\DoFAdminTools\bin</BuildDir>
+        <WinBuildDir>$(BuildDir)\Win64_Shipping_Server</WinBuildDir>
+        <LinuxBuildDir>$(BuildDir)\Linux64_Shipping_Server</LinuxBuildDir>
+    </PropertyGroup>
+    
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <AssemblyName>DoFAdminTools</AssemblyName>
+        <RootNamespace>DoFAdminTools</RootNamespace>
+        <LangVersion>10</LangVersion>
+        <IsPackable>false</IsPackable>
+        <Company>krex</Company>
+        <Version>2.5</Version>
+        
+        <!-- build config -->
+        <OutputPath>$(WinBuildDir)</OutputPath>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <GenerateDependencyFile>False</GenerateDependencyFile>
+        <DebugSymbols Condition="'$(Configuration)' == 'Release'">false</DebugSymbols>
+        <DebugType Condition="'$(Configuration)' == 'Release'">None</DebugType>
+    </PropertyGroup>
+
+    <Target Name="CheckServerPathSet" BeforeTargets="GetReferenceAssemblyPaths">
+        <Error Text="Server path not found, please set the BLSERVER environment variable to the path of your Bannerlord Server installation." Condition="'$(BLSERVER)' == ''" />
+    </Target>
+
+    <Target Name="CopyToLinuxServerFolder" AfterTargets="Build">
+        <Copy SourceFiles="$(WinBuildDir)\DoFAdminTools.dll" DestinationFolder="$(LinuxBuildDir)" />
+    </Target>
+
+    <ItemGroup>
+        <Reference Include="$(BLSERVER)\bin\Win64_Shipping_Server\TaleWorlds.MountAndBlade.dll">
+            <Private>False</Private>
+        </Reference>
+
+        <Reference Include="$(BLSERVER)\bin\Win64_Shipping_Server\TaleWorlds.MountAndBlade.Multiplayer.dll">
+            <Private>False</Private>
+        </Reference>
+
+        <Reference Include="$(BLSERVER)\bin\Win64_Shipping_Server\TaleWorlds.PlayerServices.dll">
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="$(BLSERVER)\bin\Win64_Shipping_Server\TaleWorlds.Core.dll">
+            <Private>False</Private>
+        </Reference>
+
+        <Reference Include="$(BLSERVER)\bin\Win64_Shipping_Server\TaleWorlds.Library.dll">
+            <Private>False</Private>
+        </Reference>
+
+        <Reference Include="$(BLSERVER)\bin\Win64_Shipping_Server\TaleWorlds.MountAndBlade.DotNetCore.dll">
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="$(BLSERVER)\bin\Win64_Shipping_Server\TaleWorlds.DotNet.dll">
+            <Private>False</Private>
+        </Reference>
+
+        <Reference Include="$(BLSERVER)\bin\Win64_Shipping_Server\TaleWorlds.Network.dll">
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="$(BLSERVER)\bin\Win64_Shipping_Server\System.Numerics.Vectors.dll">
+            <Private>False</Private>
+        </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ContentWithTargetPath Include="SubModule.xml" TargetPath="..\..\SubModule.xml" CopyToOutputDirectory="Always" />
+    </ItemGroup>
+</Project>
