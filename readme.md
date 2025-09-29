@@ -85,7 +85,6 @@ docker logs -f bnl-skirmish
 docker logs -f server-arena-tdm
 docker logs -f server-arena-tdm | grep -i error
 docker logs -f bnl-duel | grep -i warn
-docker login
 ```
 If using Azure Container Registry: 
 ```
@@ -163,6 +162,8 @@ C:\Users\YourName\Documents\fief_tssl_bl_srv
 ```
 
 Whenever you add a map, you need to ensure you have an updated server configuration file which actually loads the map in. Then invoke that updated server configuration when you start the server. If you review the provided example configuration files, you can see how both native (built-in) and custom maps are loaded in a server configuration file. You cam mix multiple maps that support different game modes in a server even though that's not used in the example server configuration files.  
+
+Make sure you run ```docker login``` once as well. You'll need to run ```az acr login``` when using Azure Container Registry.
 
 </details>
 
