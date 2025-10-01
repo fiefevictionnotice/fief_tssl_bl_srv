@@ -1,12 +1,14 @@
 # Basic Settings
 #add_map_to_usable_maps mymap Siege,Skirmish
-#The maps to be served must be “registered” through either the Map configuration option, the add_map_to_automated_battle_pool or add_map_to_usable_maps commands. In other words, only maps playable on the server are served.
+#The maps to be served must be “registered” through either the Map configuration option, the add_map_to_automated_battle_pool or add_map_to_usable_maps commands.
 
 ServerName Fief_TSSL_BL_Srv Test Battle Server
 GameType TeamDeathmatch
 Map scn_oldarena_battle
 add_map_to_automated_battle_pool scn_oldarena_battle
+add_map_to_automated_battle_pool mp_battle_map_002 Battle
 add_map_to_usable_maps scn_oldarena_battle Battle
+add_map_to_usable_maps mp_battle_map_002
 set_automated_battle_count -1
 
 # Culture Settings
