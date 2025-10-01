@@ -61,7 +61,7 @@ Additional example with updated TCP Port (works with the same image - note this 
 ```
 docker run -d --name bnlcc-realbattle \
 -e TW_TOKEN=<YourTWTokenHere> \
--e MODULES="_MODULES_*Native*Multiplayer*CCModule*DoFAdminTools*_MODULES_" \
+-e MODULES="_MODULES_*Native*Multiplayer*DoFAdminTools*_MODULES_" \
 -e TICK_RATE=60 \
 -e SERVER_CFG="Native/server-battle-config" \
 -e SERVER_PORT=7215 \
