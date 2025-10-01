@@ -7,10 +7,8 @@ Fixes:
 
 Improvements:
 - This version is more flexible for running multiple instances of the same image on different listening ports. The original dockerfile does not expose multiple TCP ports or expose the SERVER_PORT variable. In this version, if you want to run 10 servers with multiple configurations (different server names, game modes, etc.) from one image on the same virtual machine you can. This is only possible if both are true A) multiple TCP/UDP ports are exposed in the dockerfile, and B) you are able to specify the SERVER_PORT variable with the run command. Both are true in this fork, but neither are true for the original branch. 
-- More example configurations.
-
- Planned:
- Add Chat Commands (DoFAdminTools) as a default module.
+- More example configurations, example commands, and reference files.
+- Added Chat Commands (DoFAdminTools) as a default module.
 
 # ☀ TSSL Bannerlord Server
 
