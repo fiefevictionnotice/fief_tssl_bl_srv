@@ -133,7 +133,7 @@ e.g. ``C:\Users\<Username>\Documents\tssl_bl_srv\modules\Native\server-duel-alt`
 
 ## 💡 Getting Started with this Fork - Details for Beginners:
 
-First time GitHub users, read this:
+First time GitHub/Docker users, read this:
 <details>
   <summary>Click to expand</summary>
  
@@ -143,6 +143,7 @@ First time GitHub users, read this:
 **Install Git:**
 Download the Git installer: ```https://git-scm.com/download/win```
 Run it with the defaults (next → next → finish) - as with everything here, use at your own risk.
+Or install with winget from a PowerShell window: ```winget install -e --id Git.Git```
 Open PowerShell and check it worked:
 ```git --version```
 You should see something like ```git version 2.x.x.```
@@ -161,7 +162,38 @@ C:\Users\YourName\Documents\fief_tssl_bl_srv
 
 Whenever you add a map, you need to ensure you have an updated server configuration file which actually loads the map in. Then invoke that updated server configuration when you start the server. If you review the provided example configuration files, you can see how both native (built-in) and custom maps are loaded in a server configuration file. You cam mix multiple maps that support different game modes in a server even though that's not used in the example server configuration files.  
 
+
+**Install Docker Desktop - Windows**
+
+https://docs.docker.com/desktop/setup/install/windows-install/
+```winget install -e --id Docker.DockerDesktop```
 Make sure you run ```docker login``` once as well. You'll need to run ```az acr login``` when using Azure Container Registry.
+
+
+
+**To Host in Azure**
+
+Install Azure CLI - Windows
+
+https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?view=azure-cli-latest&pivots=winget
+
+```winget install --exact --id Microsoft.AzureCLI```
+
+
+Install Azure CLI - Ubuntu
+
+```curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash```
+
+https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux?view=azure-cli-latest&pivots=apt
+
+
+Install Docker Engine - Ubuntu
+
+https://docs.docker.com/engine/install/ubuntu/
+
+```curl -fsSL https://get.docker.com -o get-docker.sh```
+
+```sudo sh ./get-docker.sh --dry-run```
 
 </details>
 
