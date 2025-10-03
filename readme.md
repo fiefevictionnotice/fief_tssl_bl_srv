@@ -36,18 +36,18 @@ Installation Links:
 ```
 docker build -t fief_tssl_bl_srv .
 ```
-or, if using Azure Container Registry:
+or, if using Azure Container Registry, build & tag the image before pushing it in a one liner:
 ```
 docker build -f dockerfile -t YourRegistryHere.azurecr.io/bannerlord:latest .; docker push YourRegistryHere.azurecr.io/bannerlord:latest
 ```
 
 ##### 🚀 Run Docker Image
 ```
-docker run -d --name bnl-battle \
+docker run -d --name bnl-tdm \
 -e TW_TOKEN=<Your_Taleworlds_Token_Which_Expires_Every_3_Months> \
 -e MODULES="_MODULES_*Native*Multiplayer*_MODULES_" \
 -e TICK_RATE=60 \
--e SERVER_CFG="Native/server-battle" \
+-e SERVER_CFG="Native/server-arena-tdm" \
 -e SERVER_PORT=7210 \
 -p 7210:7210/tcp -p 7210:7210/udp \
 yourazureregistry.azurecr.io/bannerlord:latest
@@ -59,11 +59,11 @@ TCP ports 7210-7220 are exposed for both TCP & UDP in the dockerfile. You can mo
 
 Additional example with updated TCP Port (works with the same image - note this example assumes you're running DOFAdminTools): 
 ```
-docker run -d --name bnlcc-realbattle \
+docker run -d --name bnlcc-skirm-pub \
 -e TW_TOKEN=<YourTWTokenHere> \
 -e MODULES="_MODULES_*Native*Multiplayer*DoFAdminTools*_MODULES_" \
 -e TICK_RATE=60 \
--e SERVER_CFG="Native/server-battle-config" \
+-e SERVER_CFG="Native/server-skirmish-public" \
 -e SERVER_PORT=7215 \
 -p 7215:7215/tcp -p 7215:7215/udp \
 <YourRegistryName>.azurecr.io/bannerlord:latest
@@ -76,6 +76,7 @@ Stop & remove container (you can't start it back up without removing it first):
 docker stop server && docker rm server
 docker stop bnl-duel && docker rm bnl-duel
 ```
+(Are you using ```sudo```?)
 
 Review logs (can provide useful information about errors:
 ```
@@ -138,7 +139,8 @@ First time GitHub/Docker users, read this:
   <summary>Click to expand</summary>
  
 **Summary:**
- Install Git and clone the repository. You can modify the modules, server configuration files, and maps afterwards.
+
+Install Git and clone the repository. You can modify the modules, server configuration files, and maps afterwards.
  
 **Install Git:**
 Download the Git installer: ```https://git-scm.com/download/win```
@@ -194,6 +196,52 @@ https://docs.docker.com/engine/install/ubuntu/
 ```curl -fsSL https://get.docker.com -o get-docker.sh```
 
 ```sudo sh ./get-docker.sh --dry-run```
+
+##**Overview of a complete build process when hosting in Azure:**
+- Create an account for Azure Portal & Docker
+
+**Windows desktop:**
+- Install Git, Docker Desktop, Azure CLI
+- Login to Docker Desktop (app) ```docker login``` from PowerShell, login to Azure CLI (PowerShell 7 ```az acr login```)
+- Change to your build directory in PowerShell e.g. cd $env:USERPROFILE\Documents\fief_tssl_bl_srv.git
+
+
+**Azure:**
+- Set up Azure Container Registry, take note of your Login Server (```YourNameHere.azurecr.io```)
+- Set up an Azure Virtual Machine, download your SSH Private Key.
+- VM SKU: something like a D4ads_v6 SKU
+- SSH to your VM, install Docker Engine & Azure CLI
+- Login to Azure CLI in preparation to pull the image ```az acr login``` - this requires you to open a web URL on your local desktop (read the output from your login command).
+
+
+**Windows Desktop:**
+- Run a build & Push command:
+- ```docker build -f dockerfile -t YourRegistryHere.azurecr.io/bannerlord:latest .; docker push YourRegistryHere.azurecr.io/bannerlord:latest```
+
+
+**Azure:**
+- Run a pull command e.g. ```docker pull YourRegistryLoginServerNameHere.azurecr.io/YourImageNameHerePossiblyBannerlord:latest```
+- You may need to run it as _sudo_ docker pull etc.
+
+**Bannerlord Token Generation:**
+
+https://moddocs.bannerlord.com/multiplayer/hosting_server/#generating-a-token
+
+- Alt + ~ to launch Console
+- Run the following command: ```customserver.gettoken``` - hit enter.
+- You'll use the token from  ```Documents\Mount & Blade II Bannerlord\Tokens``` in your Server launch command on your Azure VM
+
+Start up the server command like with the following command: 
+```
+docker run -d --name bnl-tdm \
+-e TW_TOKEN=TW_TOKEN=FkHLdAReallyLongStringWasRedactedHereRepeatingLetters== \
+-e MODULES="_MODULES_*Native*Multiplayer*_MODULES_" \
+-e TICK_RATE=60 \
+-e SERVER_CFG="Native/server-arena-tdm" \
+-e SERVER_PORT=7210 \
+-p 7210:7210/tcp -p 7210:7210/udp \
+yourazureregistry.azurecr.io/bannerlord:latest
+```
 
 </details>
 
