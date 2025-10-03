@@ -197,13 +197,14 @@ https://docs.docker.com/engine/install/ubuntu/
 
 ```sudo sh ./get-docker.sh --dry-run```
 
-##**Overview of a complete build process when hosting in Azure:**
+**- Overview of a complete build process when hosting in Azure -**
 - Create an account for Azure Portal & Docker
 
 **Windows desktop:**
 - Install Git, Docker Desktop, Azure CLI
 - Login to Docker Desktop (app) ```docker login``` from PowerShell, login to Azure CLI (PowerShell 7 ```az acr login```)
-- Change to your build directory in PowerShell e.g. cd $env:USERPROFILE\Documents\fief_tssl_bl_srv.git
+- Change to your build directory in PowerShell e.g. cd $env:USERPROFILE\Documents\fief_tssl_bl_srv\
+- We'll come back and build the image after Azure Container Registry is setup.
 
 
 **Azure:**
