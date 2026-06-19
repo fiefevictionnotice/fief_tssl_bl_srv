@@ -1,0 +1,34 @@
+ServerName ♞Fief CC84 Battle B
+GameType Battle
+Map CC_84_battle
+add_map_to_usable_maps CC_84_battle Battle
+add_map_to_automated_battle_pool CC_84_battle
+set_automated_battle_count -1
+
+UnlimitedGold True
+
+CultureTeam1 khuzait
+CultureTeam2 aserai
+
+RespawnPeriodTeam1 5
+RespawnPeriodTeam2 5
+RoundPreparationTimeLimit 15
+MaxNumberOfPlayers 50
+AutoTeamBalanceThreshold 0
+MinNumberOfPlayersForMatchStart 1
+SpectatorCamera 6
+RoundTotal 50
+MapTimeLimit 60
+RoundTimeLimit 420
+WarmupTimeLimit 120
+
+FriendlyFireDamageMeleeFriendPercent 50
+FriendlyFireDamageMeleeSelfPercent 0
+FriendlyFireDamageRangedFriendPercent 50
+FriendlyFireDamageRangedSelfPercent 0
+
+AdminPassword cat
+GamePassword fief
+
+start_game
+enable_automated_battle_switching
