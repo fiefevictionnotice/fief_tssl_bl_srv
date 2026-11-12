@@ -1,5 +1,10 @@
-#To synchronize with upstream changes from Krex:
-git fetch dof
-git subtree pull --prefix=modules/DoFAdminTools dof master --squash
-# or: ... dof main --squash
-git push
+DoFAdminTools here is the Bannerlord 1.5.x build from the unofficial fork:
+  https://github.com/fiefevictionnotice/dofadmintools  (fork of https://gitlab.com/Krex/dofadmintools)
+Original work by Krex, MIT license (modules/DoFAdminTools/LICENSE). Thank you to Krex for having this mod open source.
+
+The fork only adds 1.5.x compatibility (see the fork notice at the top of modules/DoFAdminTools/readme.md).
+To update: build the fork (dotnet build -c Release, with the BLSERVER environment variable pointing at a 1.5.x
+dedicated server folder) and copy bin/Release/DoFAdminTools/* plus LICENSE and README.md (as readme.md) into
+modules/DoFAdminTools.
+If Krex releases an official 1.5.x version, switch back to his release.
+(The old "git subtree pull ... dof master" route pulls Krex's 1.3 source, which does not build or run on 1.5.x.)

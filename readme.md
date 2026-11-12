@@ -2,7 +2,14 @@
 
 Small fixes and improvements.
 
+> **Game version: Bannerlord 1.5.x (tested with 1.5.7).** The image installs whatever version Steam currently serves.
+> Bannerlord 1.5.6 moved the dedicated server from .NET 6 to .NET 8, so this image installs the .NET 8 / ASP.NET Core 8
+> runtime on Debian 12. Images built from the old .NET 6 dockerfile download 1.5.x but the server does not start.
+> Mods compiled for 1.4.x or older usually need a rebuild for 1.5.x (server option ids and some methods changed).
+
 Fixes: 
+- Bannerlord 1.5.x support: .NET 8 runtime (was .NET 6 with a hard-coded 6.0.36 path), Debian 12 base (Debian 11 is end of life).
+- DoFAdminTools replaced by a 1.5.x-compatible build from an unofficial fork ([fiefevictionnotice/dofadmintools](https://github.com/fiefevictionnotice/dofadmintools), original by [Krex](https://gitlab.com/Krex/dofadmintools), MIT license). The 2.5 build shipped before could not make admins on 1.5.x.
 - The original server has an example server.txt file, but will only run if no file extension is used with the original dockerfile (i.e. "server" instead of "server.txt"). This is an unnecessary source of confusion.
 
 Improvements:

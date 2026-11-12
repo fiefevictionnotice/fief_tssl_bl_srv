@@ -1,4 +1,17 @@
-Thank you to Krex for having this mod open source.
+> **Fork notice.** This is an unofficial fork of [DoF Admin Tools by Krex](https://gitlab.com/Krex/dofadmintools),
+> kept only to make it run on **Bannerlord 1.5.x** (tested build: 1.5.7) until the original is updated. All credit for
+> the mod goes to Krex; it stays under his MIT license (see `LICENSE`). Please report general issues and feature
+> requests to the original project. Problems that only happen in this fork go to this repository's issues.
+>
+> **Changes from upstream release 2.6:**
+> - Bannerlord 1.5.x removed `NetworkCommunicator.UpdateForJoiningCustomGame(bool)`, which DAT used to give its admins
+>   the vanilla admin rights. `Helpers/AdminFlag.cs` uses the old method when it exists and otherwise the (now private)
+>   `IsAdmin` setter, so the same build logic works from 1.3 to 1.5.x.
+> - Built against the 1.5.7 dedicated server. 1.5.x inserted a new server option (`StreamerPassword`) near the top of
+>   `MultiplayerOptions.OptionType`, so builds made for older versions read the wrong option for `Map` (map aliases).
+> - Target framework `net8.0` (the 1.5.x dedicated server runs on .NET 8). Version 2.6.1.
+>
+> A ready-to-use module is on this repository's Releases page. Builds for 1.3/1.4 servers: use the original project.
 
 # DoF Admin Tools (DAT) for Bannerlord Servers
 
@@ -32,6 +45,8 @@ Note that anything written in ALLCAPS is a parameter. If a parameter is containe
       - Teleports any player whose name contains the given `PLAYERNAME` to your current position. If no `PLAYERNAME` is given, all players are teleported.
     - `!tpmeto PLAYERNAME`
       - Teleport yourself to the position of a player whose name contains the given `PLAYERNAME`. If multiple players names contain the given `PLAYERNAME`, the first one found is used, so be precise.
+    - `!teleport <PLAYERNAME1> @ <PLAYERNAME2>`
+      - Teleports `<PLAYERNAME1>` to `<PLAYERNAME2>`. Names do not need to be an exact match, the first player whose name contains `<PLAYERNAMEx>` will be taken.
     - `!removehorses`
       - Remove all horses from the scene that do not currently have a rider.
       - Provided by Doseq - thank you!
@@ -117,16 +132,10 @@ Note that anything written in ALLCAPS is a parameter. If a parameter is containe
 
 Below is a list of features currently planned to be added to the module. If you have any other ideas, feel free to reach out and suggest them - or open a [Merge Request](https://gitlab.com/Krex/dofadmintools/-/merge_requests)!
 
-- [X] Timed messages - Add options to add one or more messages to be sent to players by the server on a configurable interval. 
 - [ ] Scene Scripts - Not a whole lot is possible here, but teleport doors will come.
-- [ ] Further Chat Commands
-  - [X] `!help`
-  - [X] `!heal`
-  - [X] `!extendwarmup`
-  - [ ] ...
-  - [X] Multiple teleport variations (to player, player to me, ...)
+- [ ] Further Chat Commands (on request)
+  - [ ] Toggle UnlimitedGold
 - [ ] Logging
-- [X] A fix for TaleWorlds ban system, keeping permanent bans across server restarts
 - [ ] Configuration for messages shown in chat, to allow for customization & internationalization
 - [ ] ...
 

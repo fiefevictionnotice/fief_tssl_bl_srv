@@ -1,49 +1,41 @@
-# Use Debian slim as the base image
-FROM debian:bullseye-slim
+# Debian 12 (bookworm). Debian 11 (bullseye) reached end of life in 2026.
+FROM debian:bookworm-slim
 
 # Set environment variables
 ENV STEAMCMDDIR=/steamcmd
 ENV BANNERLORDDIR=/bl_srv
 ENV PATH="$PATH:/usr/share/dotnet"
+ENV DOTNET_CLI_TELEMETRY_OPTOUT=1
 
-# Install Linux dependencies and add Microsoft repository
+# Linux dependencies: steamcmd needs the 32-bit C/C++ runtime; the server needs curl, ICU, OpenSSL 3 and
+# libatomic (libRgl.so / libGame.so link against libatomic.so.1).
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    libatomic1 \
     wget \
-    apt-transport-https \
     ca-certificates \
     curl \
     tar \
-    libgl1-mesa-glx \
+    gnupg \
+    unzip \
     lib32gcc-s1 \
     lib32stdc++6 \
     libcurl4 \
-    libssl1.1 \
-    gnupg \
-    unzip \
-    cmake \
-    pkg-config \
-    g++ \
-    mesa-utils \
-    libglu1-mesa-dev \
-    freeglut3 \
-    freeglut3-dev \
-    mesa-common-dev \
-    libglew-dev \
-    libglfw3-dev \
-    libglm-dev \
-    libao-dev \
-    libmpg123-dev && \
+    libssl3 \
+    libicu72 \
+    libgl1 \
+    libglu1-mesa && \
     rm -rf /var/lib/apt/lists/*
 
-# Add Microsoft package repository
-RUN wget https://packages.microsoft.com/config/debian/11/prod.list && \
-    mv prod.list /etc/apt/sources.list.d/microsoft-prod.list && \
-    wget https://packages.microsoft.com/keys/microsoft.asc && \
-    apt-key add microsoft.asc && \
+# Microsoft package repository (Debian 12)
+RUN wget -q https://packages.microsoft.com/config/debian/12/packages-microsoft-prod.deb && \
+    dpkg -i packages-microsoft-prod.deb && \
+    rm packages-microsoft-prod.deb && \
     apt-get update
 
-# Install .NET SDK
-RUN apt-get install -y dotnet-sdk-6.0
+# .NET 8 + ASP.NET Core 8 runtime. Bannerlord 1.5.6 moved the dedicated server from .NET 6 to .NET 8
+# (TaleWorlds.Starter.DotNetCore.Linux.runtimeconfig.json asks for Microsoft.NETCore.App 8.0.0).
+RUN apt-get install -y --no-install-recommends aspnetcore-runtime-8.0 && \
+    rm -rf /var/lib/apt/lists/*
 
 # Add i386 architecture for 32-bit libraries
 RUN dpkg --add-architecture i386
@@ -60,14 +52,22 @@ RUN mkdir -p ${BANNERLORDDIR}
 # Set working directory to SteamCMD
 WORKDIR ${STEAMCMDDIR}
 
-# Install Bannerlord server using SteamCMD
-RUN ./steamcmd.sh +force_install_dir ${BANNERLORDDIR} +login anonymous +app_update 1863440 validate +quit
+# Install Bannerlord server using SteamCMD. A freshly installed steamcmd often fails its first app_update with
+# "Missing configuration", so let it self-update first and retry the install up to 3 times.
+RUN ./steamcmd.sh +quit || true; \
+    for i in 1 2 3; do \
+      ./steamcmd.sh +force_install_dir ${BANNERLORDDIR} +login anonymous +app_info_update 1 +app_update 1863440 validate +quit && \
+      [ -f ${BANNERLORDDIR}/bin/Linux64_Shipping_Server/TaleWorlds.Starter.DotNetCore.Linux.dll ] && exit 0; \
+      echo "steamcmd attempt $i failed, retrying"; sleep 5; \
+    done; exit 1
 
 # Set working directory to Bannerlord server directory
 WORKDIR ${BANNERLORDDIR}/bin/Linux64_Shipping_Server
 
-# Copy the runtime files to the Bannerlord server directory
-RUN cp -R /usr/share/dotnet/shared/Microsoft.AspNetCore.App/6.0.36/. ${BANNERLORDDIR}/bin/Linux64_Shipping_Server/
+# Copy the ASP.NET Core 8 runtime files next to the server (whatever 8.0.x patch version apt installed)
+RUN ASPNET=$(ls -d /usr/share/dotnet/shared/Microsoft.AspNetCore.App/8.* | sort -V | tail -1) && \
+    echo "ASP.NET Core runtime: $ASPNET" && \
+    cp -R "$ASPNET"/. ${BANNERLORDDIR}/bin/Linux64_Shipping_Server/
 
 # Copy the configuration file from the host to the container
 
